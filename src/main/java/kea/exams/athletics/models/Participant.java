@@ -30,3 +30,4 @@ public class Participant {
     @ManyToMany(mappedBy = "participants")
     private List<Discipline> disciplines;
 }
+
