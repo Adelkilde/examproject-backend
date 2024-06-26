@@ -1,9 +1,9 @@
 use athletics_db;
 
 
-INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (1, 'Big Jim', 'Male', '1983-04-12', 'Denver Dolphins');
-INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (2, 'Kassandra', 'Female', '1995-03-17', 'Montana Mustangs');
-INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (3, 'Tyrael', 'Archangel', '1999-12-25', 'Heavenly Hosts');
+INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (1, 'Big Jim', 'MALE', '1983-04-12', 'Denver Dolphins');
+INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (2, 'Kassandra', 'FEMALE', '1995-03-17', 'Montana Mustangs');
+INSERT INTO participant (id, name, gender, date_of_birth, club ) VALUES (3, 'Tyrael', 'MALE', '1999-12-25', 'Heavenly Hosts');
 
 INSERT INTO discipline (id, name, result_type) VALUES (1, 'Running', 'Time');
 INSERT INTO discipline (id, name,result_type) VALUES (2, 'Decathlon', 'Points');

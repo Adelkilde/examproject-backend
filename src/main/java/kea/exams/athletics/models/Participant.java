@@ -1,6 +1,7 @@
 package kea.exams.athletics.models;
 
 import jakarta.persistence.*;
+import kea.exams.athletics.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ public class Participant {
 
     private String name;
 
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     private Date dateOfBirth;
 
