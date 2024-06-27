@@ -42,6 +42,7 @@ public class ResultService {
     public void deleteResult(int id) {
         Result result = resultRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Result not found"));
-        resultRepository.deleteById(id);
+
+        resultRepository.deleteById(result.getId());
     }
 }

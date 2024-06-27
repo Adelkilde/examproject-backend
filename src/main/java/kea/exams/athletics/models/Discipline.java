@@ -1,12 +1,15 @@
 package kea.exams.athletics.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,16 +24,11 @@ public class Discipline {
 
     private String resultType;
 
-    @ManyToMany
-    @JoinTable(
-            name = "participant_discipline",
-            joinColumns = @JoinColumn(name = "discipline_id"),
-            inverseJoinColumns = @JoinColumn(name = "participant_id")
-    )
-    @JsonIgnore
-    private List<Participant> participants;
-
     @OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<Result> results;
+    private Set<Result> results = new HashSet<>();
+
+    @ManyToMany(mappedBy = "disciplines")
+    @JsonBackReference
+    private Set<Participant> participants;
 }

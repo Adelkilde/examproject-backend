@@ -1,5 +1,7 @@
 package kea.exams.athletics.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import kea.exams.athletics.enums.Gender;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,7 +32,17 @@ public class Participant {
 
     private String club;
 
-    @ManyToMany(mappedBy = "participants")
-    private List<Discipline> disciplines;
+    @ManyToMany
+    @JoinTable(
+            name = "participant_discipline",
+            joinColumns = @JoinColumn(name = "participant_id"),
+            inverseJoinColumns = @JoinColumn(name = "discipline_id")
+    )
+    @JsonManagedReference
+    private Set<Discipline> disciplines;
+
+    @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<Result> results;
 }
 
